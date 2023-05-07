@@ -42,7 +42,11 @@ class Register : AppCompatActivity() {
             val email = editEmail.text.toString()
             val password = editPassword.text.toString()
 
-            verifyData(email, password)
+            if (!verifyData(email, password)) {
+                progressBar.visibility = View.GONE
+                registerButton.visibility = View.VISIBLE
+                return@setOnClickListener
+            }
 
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
@@ -71,13 +75,19 @@ class Register : AppCompatActivity() {
         }
     }
 
-    private fun verifyData(email: String, password: String) {
+    private fun verifyData(email: String, password: String): Boolean {
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this@Register, "Enter email", Toast.LENGTH_SHORT).show()
-        } else if (!email.contains("@")) {
-            Toast.makeText(this@Register, "This is not valid email", Toast.LENGTH_SHORT).show()
-        } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this@Register, "Enter password", Toast.LENGTH_SHORT).show()
+            return false
         }
+        if (!email.contains("@")) {
+            Toast.makeText(this@Register, "This is not valid email", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this@Register, "Enter password", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
 }

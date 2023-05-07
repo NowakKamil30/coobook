@@ -9,6 +9,7 @@ class MainActivity() : AppCompatActivity() {
 
     lateinit var loginButton: Button
     lateinit var registerButton: Button
+    lateinit var resetPasswordButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +17,7 @@ class MainActivity() : AppCompatActivity() {
 
         loginButton = findViewById(R.id.btn_activity_login)
         registerButton = findViewById(R.id.btn_activity_register)
+        resetPasswordButton = findViewById(R.id.btn_reset_password)
 
         loginButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, Login::class.java))
@@ -23,6 +25,10 @@ class MainActivity() : AppCompatActivity() {
 
         registerButton.setOnClickListener {
             startActivity(Intent(this@MainActivity, Register::class.java))
+        }
+
+        resetPasswordButton.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ResetPassword::class.java))
         }
     }
 }

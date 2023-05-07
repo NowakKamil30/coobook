@@ -39,7 +39,11 @@ class Login : AppCompatActivity() {
             val email = editEmail.text.toString()
             val password = editPassword.text.toString()
 
-            verifyData(email, password)
+            if (!verifyData(email, password)) {
+                progressBar.visibility = View.GONE
+                loginButton.visibility = View.VISIBLE
+                return@setOnClickListener
+            }
 
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
@@ -59,13 +63,19 @@ class Login : AppCompatActivity() {
         }
     }
 
-    private fun verifyData(email: String, password: String) {
+    private fun verifyData(email: String, password: String): Boolean {
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this@Login, "Enter email", Toast.LENGTH_SHORT).show()
-        } else if (!email.contains("@")) {
-            Toast.makeText(this@Login, "This is not valid email", Toast.LENGTH_SHORT).show()
-        } else if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this@Login, "Enter password", Toast.LENGTH_SHORT).show()
+            return false
         }
+        if (!email.contains("@")) {
+            Toast.makeText(this@Login, "This is not valid email", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this@Login, "Enter password", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
 }
