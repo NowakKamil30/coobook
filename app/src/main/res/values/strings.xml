@@ -26,4 +26,9 @@
     <string name="ingredients">ingredients</string>
     <string name="preparation">preparation</string>
     <string name="add_photo">Add photo</string>
+    <string name="meat">Meat</string>
+    <string name="vege">Vege</string>
+    <string name="dessert">Dessert</string>
+    <string name="drink">Drink</string>
+    <string name="my_recipes">My recipes</string>
 </resources>
