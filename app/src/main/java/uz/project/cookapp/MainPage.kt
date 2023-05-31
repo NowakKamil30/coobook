@@ -13,6 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import uz.project.cookapp.model.Recipe
+import uz.project.cookapp.model.mapper.RecipeMapper
 
 class MainPage : AppCompatActivity() {
 
@@ -35,9 +36,7 @@ class MainPage : AppCompatActivity() {
         collectionRef.get()
             .addOnSuccessListener { docs ->
                 for (document in docs) {
-                    val recipe = document.toObject(Recipe::class.java);
-                    recipe.id =  document.id
-                    ownerRecipeList.add(recipe)
+                    ownerRecipeList.add(RecipeMapper.querySnapshotToRecipe(document))
                 }
 
                 ownerRecipeList = ownerRecipeList.filter { recipe -> recipe.owner.equals(auth.currentUser!!.email) }.toMutableList()
@@ -49,7 +48,9 @@ class MainPage : AppCompatActivity() {
 
                 mListView.onItemClickListener = object : AdapterView.OnItemClickListener {
                     override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
-
+                        val intent = Intent(this@MainPage, RecipePage::class.java)
+                        intent.putExtra("id", ownerRecipeList.get(position).id)
+                        startActivity(intent)
                     }
                 }
             }

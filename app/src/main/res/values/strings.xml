@@ -31,4 +31,14 @@
     <string name="dessert">Dessert</string>
     <string name="drink">Drink</string>
     <string name="my_recipes">My recipes</string>
+    <string name="type">type</string>
+    <string name="grams_per_portion">grams per portion</string>
+    <string name="_100">100</string>
+    <string name="gram">gram</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="portion">portion</string>
+    <string name="_1">1</string>
+    <string name="views">Views:</string>
+    <string name="edit">Edit</string>
 </resources>
