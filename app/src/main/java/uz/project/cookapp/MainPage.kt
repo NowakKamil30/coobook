@@ -14,6 +14,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import uz.project.cookapp.model.Recipe
 import uz.project.cookapp.model.mapper.RecipeMapper
+import java.util.Random
+import kotlin.random.Random.Default.nextInt
 
 class MainPage : AppCompatActivity() {
 
@@ -41,6 +43,12 @@ class MainPage : AppCompatActivity() {
             .addOnSuccessListener { docs ->
                 for (document in docs) {
                     ownerRecipeList.add(RecipeMapper.querySnapshotToRecipe(document))
+                }
+
+                findViewById<Button>(R.id.btn_new_for_you).setOnClickListener {
+                    val intent = Intent(this@MainPage, RecipePage::class.java)
+                    intent.putExtra("id", ownerRecipeList[kotlin.random.Random.nextInt(ownerRecipeList.size)].id)
+                    startActivity(intent)
                 }
 
                 ownerRecipeList = ownerRecipeList.filter { recipe -> recipe.owner.equals(auth.currentUser!!.email) }.toMutableList()
