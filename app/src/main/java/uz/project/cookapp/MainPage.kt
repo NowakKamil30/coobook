@@ -33,6 +33,10 @@ class MainPage : AppCompatActivity() {
             startActivity(Intent(this@MainPage, AddRecipe::class.java))
         }
 
+        findViewById<Button>(R.id.btn_favourite).setOnClickListener {
+            startActivity(Intent(this@MainPage, Favourite::class.java))
+        }
+
         collectionRef.get()
             .addOnSuccessListener { docs ->
                 for (document in docs) {
@@ -49,7 +53,7 @@ class MainPage : AppCompatActivity() {
                 mListView.onItemClickListener = object : AdapterView.OnItemClickListener {
                     override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
                         val intent = Intent(this@MainPage, RecipePage::class.java)
-                        intent.putExtra("id", ownerRecipeList.get(position).id)
+                        intent.putExtra("id", ownerRecipeList[position].id)
                         startActivity(intent)
                     }
                 }
