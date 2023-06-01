@@ -41,5 +41,6 @@
     <string name="_1">1</string>
     <string name="views">Views:</string>
     <string name="edit">Edit</string>
-    <string name="new_for_you">new for you</string>
+    <string name="new_for_you">New for you</string>
+    <string name="everything">Everything</string>
 </resources>

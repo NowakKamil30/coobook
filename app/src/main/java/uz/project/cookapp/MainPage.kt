@@ -39,6 +39,10 @@ class MainPage : AppCompatActivity() {
             startActivity(Intent(this@MainPage, Favourite::class.java))
         }
 
+        findViewById<Button>(R.id.btn_search_new).setOnClickListener {
+            startActivity(Intent(this@MainPage, SearchNewRecipe::class.java))
+        }
+
         collectionRef.get()
             .addOnSuccessListener { docs ->
                 for (document in docs) {

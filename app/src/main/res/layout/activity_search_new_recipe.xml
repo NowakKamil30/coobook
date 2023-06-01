@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchNewRecipe">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/search_new_recipe"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/checkboxs"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <CheckBox
+            android:id="@+id/checkbox_meat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/meat" />
+
+        <CheckBox
+            android:id="@+id/checkbox_vege"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vege" />
+
+        <CheckBox
+            android:id="@+id/checkbox_dessert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dessert" />
+
+        <CheckBox
+            android:id="@+id/checkbox_drink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drink" />
+
+        <CheckBox
+            android:id="@+id/checkbox_everything"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/everything" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/userlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxs"
+        tools:layout_editor_absoluteX="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
