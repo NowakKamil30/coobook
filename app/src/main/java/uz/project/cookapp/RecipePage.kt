@@ -25,6 +25,7 @@ class RecipePage : AppCompatActivity() {
     private lateinit var btnMinus: Button
     private lateinit var btnFavourite: Button
     private lateinit var btnEdit: Button
+    private lateinit var btnDelete: Button
     private var recipeFavouriteIds: MutableList<Map<String, String>> = mutableListOf<Map<String, String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +41,7 @@ class RecipePage : AppCompatActivity() {
         btnFavourite = findViewById(R.id.btn_favourite)
         gramPerPortionText = findViewById(R.id.grams_per_portion)
         btnEdit = findViewById(R.id.btn_edit)
+        btnDelete = findViewById(R.id.btn_dekete)
         portionText = findViewById(R.id.portion)
         portionText.text = 1.toString()
         auth = Firebase.auth
@@ -75,6 +77,7 @@ class RecipePage : AppCompatActivity() {
 
                 if (auth.currentUser?.email.equals(recipe.owner)) {
                     btnEdit.visibility = View.VISIBLE
+                    btnDelete.visibility = View.VISIBLE
                 }
 
                 btnEdit.setOnClickListener {
@@ -82,6 +85,14 @@ class RecipePage : AppCompatActivity() {
                     intent.putExtra("id", recipe.id)
                     startActivity(intent)
                     finish()
+                }
+
+                btnDelete.setOnClickListener {
+                    Firebase.firestore.collection("recipe").document(id).delete()
+                        .addOnSuccessListener {
+                            startActivity(Intent(this@RecipePage, MainPage::class.java))
+                            finish()
+                        }
                 }
 
                 favourite()

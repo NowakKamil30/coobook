@@ -43,4 +43,6 @@
     <string name="edit">Edit</string>
     <string name="new_for_you">New for you</string>
     <string name="everything">Everything</string>
+    <string name="edit_recipe">Edit recipe</string>
+    <string name="delete">Delete</string>
 </resources>

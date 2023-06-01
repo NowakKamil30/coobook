@@ -23,6 +23,7 @@ class MainPage : AppCompatActivity() {
     private val collectionRef = Firebase.firestore.collection("recipe")
     private var ownerRecipeList: MutableList<Recipe> = mutableListOf<Recipe>()
     private lateinit var auth: FirebaseAuth
+    private lateinit var list: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,18 +58,17 @@ class MainPage : AppCompatActivity() {
 
                 ownerRecipeList = ownerRecipeList.filter { recipe -> recipe.owner.equals(auth.currentUser!!.email) }.toMutableList()
 
-                var mListView = findViewById<ListView>(R.id.userlist)
+                list = findViewById<ListView>(R.id.userlist)
                 val arrayAdapter = ArrayAdapter(this,
                     android.R.layout.simple_list_item_1, ownerRecipeList.map { recipe -> "${recipe.title} : ${recipe.id}" })
-                mListView.adapter = arrayAdapter
+                list.adapter = arrayAdapter
 
-                mListView.onItemClickListener = object : AdapterView.OnItemClickListener {
-                    override fun onItemClick(p0: AdapterView<*>?, p1: View?, position: Int, id: Long) {
+                list.onItemClickListener =
+                    AdapterView.OnItemClickListener { p0, p1, position, id ->
                         val intent = Intent(this@MainPage, RecipePage::class.java)
                         intent.putExtra("id", ownerRecipeList[position].id)
                         startActivity(intent)
                     }
-                }
             }
     }
 }
