@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -44,6 +45,11 @@ class MainPage : AppCompatActivity() {
             startActivity(Intent(this@MainPage, SearchNewRecipe::class.java))
         }
 
+        val prefs = getSharedPreferences("points", MODE_PRIVATE)
+        var point = prefs.getInt("point", 0)
+
+        findViewById<TextView>(R.id.points).text = "Points: ${point.toString()}"
+
         collectionRef.get()
             .addOnSuccessListener { docs ->
                 for (document in docs) {
@@ -70,5 +76,14 @@ class MainPage : AppCompatActivity() {
                         startActivity(intent)
                     }
             }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val prefs = getSharedPreferences("points", MODE_PRIVATE)
+        var point = prefs.getInt("point", 0)
+
+        findViewById<TextView>(R.id.points).text = "Points: ${point.toString()}"
     }
 }

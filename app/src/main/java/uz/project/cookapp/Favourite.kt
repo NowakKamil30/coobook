@@ -31,7 +31,9 @@ class Favourite : AppCompatActivity() {
                     for (document in docs) {
                         collectionRef.document(document.get("id") as String).get()
                             .addOnSuccessListener { recipe ->
-                                favouriteRecipeList.add(RecipeMapper.querySnapshotToRecipe(recipe)!!)
+                                if (RecipeMapper.querySnapshotToRecipe(recipe) != null ) {
+                                    favouriteRecipeList.add(RecipeMapper.querySnapshotToRecipe(recipe)!!)
+                                }
                             }.addOnSuccessListener {
                                 var mListView = findViewById<ListView>(R.id.userlist)
                                 val arrayAdapter = ArrayAdapter(this,

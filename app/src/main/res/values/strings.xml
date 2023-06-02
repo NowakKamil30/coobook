@@ -46,4 +46,5 @@
     <string name="edit_recipe">Edit recipe</string>
     <string name="delete">Delete</string>
     <string name="done">Done</string>
+    <string name="points">Points:</string>
 </resources>

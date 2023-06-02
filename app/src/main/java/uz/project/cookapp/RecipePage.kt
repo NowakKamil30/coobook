@@ -1,6 +1,7 @@
 package uz.project.cookapp
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,6 +26,7 @@ class RecipePage : AppCompatActivity() {
     private lateinit var btnMinus: Button
     private lateinit var btnFavourite: Button
     private lateinit var btnEdit: Button
+    private lateinit var btnDone: Button
     private lateinit var btnDelete: Button
     private var recipeFavouriteIds: MutableList<Map<String, String>> = mutableListOf<Map<String, String>>()
 
@@ -42,10 +44,10 @@ class RecipePage : AppCompatActivity() {
         gramPerPortionText = findViewById(R.id.grams_per_portion)
         btnEdit = findViewById(R.id.btn_edit)
         btnDelete = findViewById(R.id.btn_dekete)
+        btnDone = findViewById(R.id.btn_done)
         portionText = findViewById(R.id.portion)
         portionText.text = 1.toString()
         auth = Firebase.auth
-
 
         Firebase.firestore.collection("recipe").document(id).get()
             .addOnSuccessListener { doc ->
@@ -93,6 +95,15 @@ class RecipePage : AppCompatActivity() {
                             startActivity(Intent(this@RecipePage, MainPage::class.java))
                             finish()
                         }
+                }
+
+                btnDone.setOnClickListener {
+                    val prefs = getSharedPreferences("points", MODE_PRIVATE)
+                    val editor = prefs.edit()
+                    var point = prefs.getInt("point", 0)
+                    point ++
+                    editor.putInt("point", point)
+                    editor.apply()
                 }
 
                 favourite()
