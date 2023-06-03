@@ -18,6 +18,11 @@ import uz.project.cookapp.model.mapper.RecipeMapper
 import java.util.Random
 import kotlin.random.Random.Default.nextInt
 
+/**
+ * Main activity with links to favourite page,
+ * add recipe page and search recipe page, find new recipe page
+ * and present list of user's recipes
+ */
 class MainPage : AppCompatActivity() {
 
     private lateinit var addRecipeButton: Button

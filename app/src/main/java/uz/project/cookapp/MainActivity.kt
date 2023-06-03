@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
+/**
+ * Main activity with links to login page,
+ * register page and reset password page
+ */
 class MainActivity() : AppCompatActivity() {
 
     lateinit var loginButton: Button

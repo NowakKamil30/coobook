@@ -16,7 +16,9 @@ import com.google.firebase.ktx.Firebase
 import uz.project.cookapp.model.Recipe
 import uz.project.cookapp.model.RecipeType
 
-
+/**
+ * Activity with form to add new recipe
+ */
 class AddRecipe : AppCompatActivity() {
 
     private lateinit var editTitle: TextInputEditText

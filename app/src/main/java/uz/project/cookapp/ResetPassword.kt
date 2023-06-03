@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+/**
+ * Activity with form to reset password
+ */
 class ResetPassword : AppCompatActivity() {
 
     private lateinit var editEmail: TextInputEditText

@@ -14,6 +14,9 @@ import com.google.firebase.ktx.Firebase
 import uz.project.cookapp.model.Recipe
 import uz.project.cookapp.model.mapper.RecipeMapper
 
+/**
+ * Activity with list of user favourite recipes
+ */
 class Favourite : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth

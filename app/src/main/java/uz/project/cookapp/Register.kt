@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+/**
+ * Activity with form to login to application
+ */
 class Register : AppCompatActivity() {
 
     private lateinit var editEmail: TextInputEditText

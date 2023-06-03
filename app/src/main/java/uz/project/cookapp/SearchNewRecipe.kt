@@ -14,6 +14,9 @@ import uz.project.cookapp.model.Recipe
 import uz.project.cookapp.model.RecipeType
 import uz.project.cookapp.model.mapper.RecipeMapper
 
+/**
+ * Activity with list of all recipes with option to choose by type
+ */
 class SearchNewRecipe : AppCompatActivity() {
 
     private lateinit var meatCheckBox: CheckBox

@@ -17,6 +17,9 @@ import uz.project.cookapp.model.Recipe
 import uz.project.cookapp.model.RecipeType
 import uz.project.cookapp.model.mapper.RecipeMapper
 
+/**
+ * Activity with form to edit new recipe
+ */
 class EditRecipe : AppCompatActivity() {
 
     private lateinit var editTitle: TextInputEditText

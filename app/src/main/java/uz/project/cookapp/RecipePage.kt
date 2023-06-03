@@ -15,6 +15,9 @@ import com.google.firebase.ktx.Firebase
 import uz.project.cookapp.model.Recipe
 import uz.project.cookapp.model.mapper.RecipeMapper
 
+/**
+ * Activity with details about recipe
+ */
 class RecipePage : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
